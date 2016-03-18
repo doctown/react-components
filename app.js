@@ -36,14 +36,32 @@ class GroceryListItem extends React.Component {
   // Constructor that call the super class
   constructor(props) {
     super(props);
+    // Add a state to a component
+    this.state = {
+      done: false
+    };
+  }
+
+  // Add a click event
+  onListItemClick() {
+    this.setState({
+      done: !this.state.done
+    });
   }
 
   // Every class component must have a `render` method
   // Stateless functional components are pretty much just this method
   render() {
+    // Change the style on a specific state
+    var style = {
+      textDecoration: this.state.done ? 'line-through' : 'none'
+    };
+
     // props is now a method on the class
     return (
-        <li>{this.props.item}</li>
+        <li style={style} onClick={this.onListItemClick.bind(this)}>
+          {this.props.item}
+        </li>
     );
   }
 }
