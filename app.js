@@ -43,7 +43,7 @@ class GroceryListItem extends React.Component {
   }
 
   // Add a click event
-  onListItemClick() {
+  onListItemMouseOver() {
     this.setState({
       done: !this.state.done
     });
@@ -54,12 +54,12 @@ class GroceryListItem extends React.Component {
   render() {
     // Change the style on a specific state
     var style = {
-      textDecoration: this.state.done ? 'line-through' : 'none'
+      'font-weight': this.state.done ? 'bold' : 'normal'
     };
 
     // props is now a method on the class
     return (
-        <li style={style} onClick={this.onListItemClick.bind(this)}>
+        <li style={style} onMouseOver={this.onListItemMouseOver.bind(this)}>
           {this.props.item}
         </li>
     );
